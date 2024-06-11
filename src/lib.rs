@@ -27,8 +27,8 @@ use isabelle_dm::data_model::process_result::ProcessResult;
 use isabelle_plugin_api::api::*;
 
 use log::info;
-use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 
 fn unset_id() -> u64 {
     return u64::MAX;
@@ -89,7 +89,9 @@ impl Plugin for SamplePlugin {
         item.set_str("xml", new_val);
 
         /* save to database with new 'xml' field */
-        api.db_set_item(collection, &item, false /* this is complete item, we don't merge it in */);
+        api.db_set_item(
+            collection, &item, false, /* this is complete item, we don't merge it in */
+        );
     }
 
     fn item_auth_hook(
@@ -195,8 +197,7 @@ impl Plugin for SamplePlugin {
         return false;
     }
 
-    fn call_otp_hook(&mut self, _api: &Box<dyn PluginApi>, _hndl: &str, _itm: &Item) {
-    }
+    fn call_otp_hook(&mut self, _api: &Box<dyn PluginApi>, _hndl: &str, _itm: &Item) {}
 }
 
 #[no_mangle]
