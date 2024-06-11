@@ -25,7 +25,7 @@ use actix_web::web;
 use isabelle_dm::data_model::item::Item;
 use isabelle_dm::data_model::process_result::ProcessResult;
 use isabelle_plugin_api::api::*;
-use log::error;
+
 use log::info;
 use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
